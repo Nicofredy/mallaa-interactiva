@@ -2,28 +2,53 @@ document.addEventListener('DOMContentLoaded', function() {
     // Obtener todos los elementos de ramo
     const subjects = document.querySelectorAll('.subject');
     
-    // Cargar estado guardado del localStorage
+    // Cargar progreso guardado
     loadProgress();
     
-    // Actualizar estado de los ramos basado en prerrequisitos
+    // Actualizar estado inicial
     updateLockedStatus();
     
-    // Añadir event listeners a cada ramo
+    // Añadir event listeners
     subjects.forEach(subject => {
         subject.addEventListener('click', function() {
             if (!this.classList.contains('locked')) {
-                this.classList.toggle('approved');
-                
-                // Guardar estado en localStorage
+                toggleSubject(this);
                 saveProgress();
-                
-                // Actualizar estado de los ramos que dependan de este
                 updateLockedStatus();
             }
         });
+        
+        // Crear tooltip para prerrequisitos
+        const prereqs = subject.dataset.prereq;
+        if (prereqs) {
+            const tooltip = document.createElement('div');
+            tooltip.className = 'prereq-tooltip';
+            tooltip.textContent = `Prerrequisitos: ${getPrereqNames(prereqs)}`;
+            subject.appendChild(tooltip);
+        }
     });
     
-    // Función para guardar el progreso en localStorage
+    // Botón de reset
+    const resetBtn = document.createElement('button');
+    resetBtn.className = 'reset-btn';
+    resetBtn.textContent = 'Reiniciar Progreso';
+    resetBtn.addEventListener('click', resetProgress);
+    document.querySelector('.container').appendChild(resetBtn);
+    
+    // Función para alternar estado de aprobación
+    function toggleSubject(subject) {
+        subject.classList.toggle('approved');
+    }
+    
+    // Función para obtener nombres de prerrequisitos
+    function getPrereqNames(prereqIds) {
+        return prereqIds.split(',').map(id => {
+            const prereqSubject = document.querySelector(`.subject[data-id="${id}"]`);
+            return prereqSubject ? prereqSubject.querySelector('h4').textContent : '';
+        }).filter(name => name).join(', ');
+    }
+    
+    // Función para guardar progreso
     function saveProgress() {
         const progress = {};
         subjects.forEach(subject => {
@@ -32,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('vetProgress', JSON.stringify(progress));
     }
     
-    // Función para cargar el progreso desde localStorage
+    // Función para cargar progreso
     function loadProgress() {
         const savedProgress = localStorage.getItem('vetProgress');
         if (savedProgress) {
@@ -45,73 +70,32 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Función para actualizar el estado de bloqueo de los ramos
+    // Función para actualizar estado de bloqueo
     function updateLockedStatus() {
         subjects.forEach(subject => {
-            // Reset locked status
             subject.classList.remove('locked');
             
-            // Verificar prerrequisitos
             const prereqs = subject.dataset.prereq;
-            if (prereqs) {
-                const prereqList = prereqs.split(',');
-                const allPrereqsMet = prereqList.every(prereqId => {
-                    const prereqSubject = document.querySelector(`.subject[data-id="${prereqId}"]`);
+            if (prereqs && !subject.classList.contains('approved')) {
+                const allPrereqsMet = prereqs.split(',').every(id => {
+                    const prereqSubject = document.querySelector(`.subject[data-id="${id}"]`);
                     return prereqSubject && prereqSubject.classList.contains('approved');
                 });
                 
-                if (!allPrereqsMet && !subject.classList.contains('approved')) {
+                if (!allPrereqsMet) {
                     subject.classList.add('locked');
-                    
-                    // Mostrar información de prerrequisitos
-                    let prereqNames = prereqList.map(prereqId => {
-                        const prereqSubject = document.querySelector(`.subject[data-id="${prereqId}"]`);
-                        return prereqSubject ? prereqSubject.textContent.trim().split('(')[0] : '';
-                    }).filter(name => name !== '');
-                    
-                    if (prereqNames.length > 0) {
-                        let prereqInfo = subject.querySelector('.prereq-info');
-                        if (!prereqInfo) {
-                            prereqInfo = document.createElement('div');
-                            prereqInfo.className = 'prereq-info';
-                            subject.appendChild(prereqInfo);
-                        }
-                        prereqInfo.textContent = `Prerrequisitos: ${prereqNames.join(', ')}`;
-                    }
-                } else {
-                    // Eliminar información de prerrequisitos si ya no es necesaria
-                    const prereqInfo = subject.querySelector('.prereq-info');
-                    if (prereqInfo) {
-                        prereqInfo.remove();
-                    }
                 }
             }
         });
     }
     
-    // Botón para resetear todo (opcional)
-    const resetButton = document.createElement('button');
-    resetButton.textContent = 'Reiniciar Progreso';
-    resetButton.style.display = 'block';
-    resetButton.style.margin = '20px auto';
-    resetButton.style.padding = '10px 20px';
-    resetButton.style.backgroundColor = '#e91e63';
-    resetButton.style.color = 'white';
-    resetButton.style.border = 'none';
-    resetButton.style.borderRadius = '5px';
-    resetButton.style.cursor = 'pointer';
-    resetButton.addEventListener('click', function() {
-        if (confirm('¿Estás seguro de que quieres reiniciar todo tu progreso?')) {
+    // Función para reiniciar progreso
+    function resetProgress() {
+        if (confirm('¿Estás seguro de que deseas reiniciar todo tu progreso?')) {
             subjects.forEach(subject => {
                 subject.classList.remove('approved', 'locked');
-                const prereqInfo = subject.querySelector('.prereq-info');
-                if (prereqInfo) {
-                    prereqInfo.remove();
-                }
             });
             localStorage.removeItem('vetProgress');
         }
-    });
-    
-    document.querySelector('.container').appendChild(resetButton);
+    }
 });
