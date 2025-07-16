@@ -2,439 +2,52 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Malla Veterinaria Interactiva</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Malla Interactiva Veterinaria</title>
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Malla Curricular Veterinaria</h1>
-        
+    <h1>Malla Interactiva - Medicina Veterinaria</h1>
+    <div class="malla">
+
         <!-- Año 1 -->
-        <div class="year-container">
+        <div class="anio">
             <h2>AÑO 1</h2>
-            
-            <!-- Semestre 1 -->
-            <div class="semester-container">
-                <h3>SEMESTRE 1</h3>
-                <div class="grid-container">
-                    <div class="subject" data-id="tcoe" data-prereq="">
-                        <div class="subject-content">
-                            <h4>Taller de Comunicación Oral y Escrita</h4>
-                            <p>Ámbito General</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="matgen" data-prereq="">
-                        <div class="subject-content">
-                            <h4>Matemática General</h4>
-                            <p>Ámbito General</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="intmedvet" data-prereq="">
-                        <div class="subject-content">
-                            <h4>Introducción a la Medicina Veterinaria</h4>
-                            <p>Ámbito Disciplinario - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="biocel" data-prereq="">
-                        <div class="subject-content">
-                            <h4>Biología Celular</h4>
-                            <p>Ámbito Disciplinario - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="quimica" data-prereq="">
-                        <div class="subject-content">
-                            <h4>Química</h4>
-                            <p>Ámbito Disciplinario - Actividades Prácticas</p>
-                        </div>
-                    </div>
+
+            <div class="semestre">
+                <h3>Semestre 1</h3>
+                <div class="ramos">
+                    <button class="ramo" id="r1">Taller de Comunicación Oral y Escrita</button>
+                    <button class="ramo" id="r2">Matemática General</button>
+                    <button class="ramo" id="r3">Introducción a la Medicina Veterinaria</button>
+                    <button class="ramo" id="r4">Biología Celular</button>
+                    <button class="ramo" id="r5">Química</button>
+                </div>
+            </div>
+
+            <div class="semestre">
+                <h3>Semestre 2</h3>
+                <div class="ramos">
+                    <button class="ramo" id="r6" data-requiere="r1,r2,r4,r5">Inglés I</button>
+                    <button class="ramo" id="r7">Bioestadística</button>
+                    <button class="ramo" id="r8" data-requiere="r3">Anatomía del Canino</button>
+                    <button class="ramo" id="r9">Histoembriología</button>
+                    <button class="ramo" id="r10" data-requiere="r5">Bioquímica</button>
                 </div>
             </div>
             
-            <!-- Semestre 2 -->
-            <div class="semester-container">
-                <h3>SEMESTRE 2</h3>
-                <div class="grid-container">
-                    <div class="subject" data-id="ingles1" data-prereq="">
-                        <div class="subject-content">
-                            <h4>Inglés I</h4>
-                            <p>Ámbito General</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="bioestad" data-prereq="matgen">
-                        <div class="subject-content">
-                            <h4>Bioestadística</h4>
-                            <p>Ámbito General</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="anatcan" data-prereq="biocel">
-                        <div class="subject-content">
-                            <h4>Anatomía del Canino</h4>
-                            <p>Ámbito Disciplinario - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="histoemb" data-prereq="biocel">
-                        <div class="subject-content">
-                            <h4>Histoembriología</h4>
-                            <p>Ámbito Disciplinario</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="bioquim" data-prereq="quimica">
-                        <div class="subject-content">
-                            <h4>Bioquímica</h4>
-                            <p>Ámbito Disciplinario - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Año 2 -->
-        <div class="year-container">
+             <!-- Año 2 -->
+        <div class="anio">
             <h2>AÑO 2</h2>
             
-            <!-- Semestre 3 -->
-            <div class="semester-container">
-                <h3>SEMESTRE 3</h3>
-                <div class="grid-container">
-                    <div class="subject" data-id="ingles2" data-prereq="ingles1">
-                        <div class="subject-content">
-                            <h4>Inglés II</h4>
-                            <p>Ámbito General</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="medioamb" data-prereq="">
-                        <div class="subject-content">
-                            <h4>Medio Ambiente y Gestión Ambiental</h4>
-                            <p>Ámbito Disciplinario</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="anatcomp" data-prereq="anatcan">
-                        <div class="subject-content">
-                            <h4>Anatomía Comparada</h4>
-                            <p>Ámbito Disciplinario - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="zoologia" data-prereq="biocel">
-                        <div class="subject-content">
-                            <h4>Zoología</h4>
-                            <p>Ámbito Disciplinario - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="genetica" data-prereq="bioquim">
-                        <div class="subject-content">
-                            <h4>Genética</h4>
-                            <p>Ámbito Disciplinario</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="practbas" data-prereq="anatcan">
-                        <div class="subject-content">
-                            <h4>Práctica Básica</h4>
-                            <p>Ámbito Práctico</p>
-                        </div>
-                    </div>
+             <div class="semestre">
+                <h3>Semestre 3</h3>
+                <div class="ramos">
+                    <button class="ramo" id="r11">Ingles II</button>
+                    <button class="ramo" id="r12">Medio ambiente y gestion ambiental</button>
+                    <button class="ramo" id="r13">Anatomia comparada</button>
+                    <button class="ramo" id="r14">Zoologia</button>
                 </div>
-            </div>
-            
-            <!-- Semestre 4 -->
-            <div class="semester-container">
-                <h3>SEMESTRE 4</h3>
-                <div class="grid-container">
-                    <div class="subject" data-id="adminvet" data-prereq="">
-                        <div class="subject-content">
-                            <h4>Administración y Emprendimiento Veterinario</h4>
-                            <p>Ámbito General</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="microbio" data-prereq="bioquim">
-                        <div class="subject-content">
-                            <h4>Microbiología General y Veterinaria</h4>
-                            <p>Ámbito Disciplinario - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="fisioanim" data-prereq="bioquim,anatcan">
-                        <div class="subject-content">
-                            <h4>Fisiología Animal</h4>
-                            <p>Ámbito Disciplinario - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="enfermpar" data-prereq="zoologia">
-                        <div class="subject-content">
-                            <h4>Enfermedades Parasitarias</h4>
-                            <p>Ámbito Disciplinario - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="tecalim" data-prereq="bioquim">
-                        <div class="subject-content">
-                            <h4>Tecnología de los Alimentos</h4>
-                            <p>Ámbito Disciplinario - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="nutrianim" data-prereq="fisioanim">
-                        <div class="subject-content">
-                            <h4>Nutrición y Alimentación Animal</h4>
-                            <p>Ámbito Disciplinario - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Año 3 -->
-        <div class="year-container">
-            <h2>AÑO 3</h2>
-            
-            <!-- Semestre 5 -->
-            <div class="semester-container">
-                <h3>SEMESTRE 5</h3>
-                <div class="grid-container">
-                    <div class="subject" data-id="reprod" data-prereq="fisioanim">
-                        <div class="subject-content">
-                            <h4>Reproducción e Inseminación Artificial</h4>
-                            <p>Ámbito Profesional - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="inmuno" data-prereq="microbio">
-                        <div class="subject-content">
-                            <h4>Inmunología</h4>
-                            <p>Ámbito Disciplinario - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="fisiopat" data-prereq="fisioanim">
-                        <div class="subject-content">
-                            <h4>Fisiopatología</h4>
-                            <p>Ámbito Disciplinario - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="etologia" data-prereq="fisioanim">
-                        <div class="subject-content">
-                            <h4>Etología y Bienestar Animal</h4>
-                            <p>Ámbito Disciplinario - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="patsist" data-prereq="fisiopat">
-                        <div class="subject-content">
-                            <h4>Patología de Sistemas</h4>
-                            <p>Ámbito Disciplinario - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Semestre 6 -->
-            <div class="semester-container">
-                <h3>SEMESTRE 6</h3>
-                <div class="grid-container">
-                    <div class="subject" data-id="obstet" data-prereq="reprod">
-                        <div class="subject-content">
-                            <h4>Obstetricia y Ginecología</h4>
-                            <p>Ámbito Profesional - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="controlcal" data-prereq="tecalim">
-                        <div class="subject-content">
-                            <h4>Control de Calidad de los Alimentos</h4>
-                            <p>Ámbito Profesional</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="prodavi" data-prereq="nutrianim">
-                        <div class="subject-content">
-                            <h4>Producción Avícola</h4>
-                            <p>Ámbito Profesional</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="farmaco" data-prereq="bioquim">
-                        <div class="subject-content">
-                            <h4>Farmacología y Toxicología</h4>
-                            <p>Ámbito Disciplinario - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="enferminf" data-prereq="microbio,inmuno">
-                        <div class="subject-content">
-                            <h4>Enfermedades Infecciosas</h4>
-                            <p>Ámbito Disciplinario - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Año 4 -->
-        <div class="year-container">
-            <h2>AÑO 4</h2>
-            
-            <!-- Semestre 7 -->
-            <div class="semester-container">
-                <h3>SEMESTRE 7</h3>
-                <div class="grid-container">
-                    <div class="subject" data-id="labclin" data-prereq="patsist">
-                        <div class="subject-content">
-                            <h4>Laboratorio Clínico</h4>
-                            <p>Ámbito Profesional</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="prodovicap" data-prereq="nutrianim">
-                        <div class="subject-content">
-                            <h4>Producción Ovinos y Caprinos</h4>
-                            <p>Ámbito Profesional</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="prodporc" data-prereq="nutrianim">
-                        <div class="subject-content">
-                            <h4>Producción Porcina</h4>
-                            <p>Ámbito Profesional</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="epidem" data-prereq="enferminf,enfermpar">
-                        <div class="subject-content">
-                            <h4>Epidemiología Veterinaria</h4>
-                            <p>Ámbito Disciplinario - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="semiolog" data-prereq="fisiopat">
-                        <div class="subject-content">
-                            <h4>Semiología</h4>
-                            <p>Ámbito Disciplinario - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Semestre 8 -->
-            <div class="semester-container">
-                <h3>SEMESTRE 8</h3>
-                <div class="grid-container">
-                    <div class="subject" data-id="cirugia" data-prereq="semiolog">
-                        <div class="subject-content">
-                            <h4>Cirugía General</h4>
-                            <p>Ámbito Profesional - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="medmayor" data-prereq="semiolog">
-                        <div class="subject-content">
-                            <h4>Medicinas de Animales Mayores</h4>
-                            <p>Ámbito Profesional - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="medcan" data-prereq="semiolog">
-                        <div class="subject-content">
-                            <h4>Medicina de Caninos</h4>
-                            <p>Ámbito Profesional - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="medfel" data-prereq="semiolog">
-                        <div class="subject-content">
-                            <h4>Medicina de Felinos</h4>
-                            <p>Ámbito Profesional - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="medexot" data-prereq="semiolog">
-                        <div class="subject-content">
-                            <h4>Medicina de Animales Exóticos</h4>
-                            <p>Ámbito Profesional - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="practint" data-prereq="practbas">
-                        <div class="subject-content">
-                            <h4>Práctica Intermedia</h4>
-                            <p>Ámbito Práctico</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Año 5 -->
-        <div class="year-container">
-            <h2>AÑO 5</h2>
-            
-            <!-- Semestre 9 -->
-            <div class="semester-container">
-                <h3>SEMESTRE 9</h3>
-                <div class="grid-container">
-                    <div class="subject" data-id="formproy" data-prereq="adminvet">
-                        <div class="subject-content">
-                            <h4>Formulación y Evaluación de Proyectos Agropecuarios</h4>
-                            <p>Ámbito General</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="prodaqui" data-prereq="nutrianim">
-                        <div class="subject-content">
-                            <h4>Producción Acuícola</h4>
-                            <p>Ámbito Profesional</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="prodbov" data-prereq="nutrianim">
-                        <div class="subject-content">
-                            <h4>Producción de Bovinos de Carne y Leche</h4>
-                            <p>Ámbito Profesional</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="patquir" data-prereq="patsist">
-                        <div class="subject-content">
-                            <h4>Patología Quirúrgica</h4>
-                            <p>Ámbito Profesional</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="diagimag" data-prereq="semiolog">
-                        <div class="subject-content">
-                            <h4>Diagnóstico por Imágenes</h4>
-                            <p>Ámbito Profesional - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="metinvest" data-prereq="bioestad">
-                        <div class="subject-content">
-                            <h4>Metodología de la Investigación</h4>
-                            <p>Ámbito General</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Semestre 10 -->
-            <div class="semester-container">
-                <h3>SEMESTRE 10</h3>
-                <div class="grid-container">
-                    <div class="subject" data-id="farmaap" data-prereq="farmaco">
-                        <div class="subject-content">
-                            <h4>Farmacología Aplicada</h4>
-                            <p>Ámbito Profesional</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="saludpub" data-prereq="epidem">
-                        <div class="subject-content">
-                            <h4>Salud Pública</h4>
-                            <p>Ámbito Profesional</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="trabajotit" data-prereq="metinvest">
-                        <div class="subject-content">
-                            <h4>Trabajo de Titulación</h4>
-                            <p>Ámbito Profesional</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="clinmenor" data-prereq="medcan,medfel">
-                        <div class="subject-content">
-                            <h4>Clínica de Animales Menores</h4>
-                            <p>Ámbito Práctico - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="clinmayor" data-prereq="medmayor">
-                        <div class="subject-content">
-                            <h4>Clínica de Animales Mayores</h4>
-                            <p>Ámbito Práctico - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                    <div class="subject" data-id="practfin" data-prereq="practint">
-                        <div class="subject-content">
-                            <h4>Práctica Final</h4>
-                            <p>Ámbito Práctico - Actividades Prácticas</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+             </div>
 
     <script src="script.js"></script>
 </body>
