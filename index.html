@@ -2,52 +2,29 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Malla Interactiva Veterinaria</title>
+    <title>Malla Interactiva Medicina Veterinaria</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <h1>Malla Interactiva - Medicina Veterinaria</h1>
+    <h1>Malla Interactiva Medicina Veterinaria</h1>
     <div class="malla">
+        <!-- Aquí solo muestro algunos ramos, tú puedes pegar todos los que tengas -->
+        <button class="ramo" id="r1">Taller de Comunicación Oral y Escrita</button>
+        <button class="ramo" id="r2">Matemática General</button>
+        <button class="ramo" id="r3">Introducción a la Medicina Veterinaria</button>
+        <button class="ramo" id="r4">Biología Celular</button>
+        <button class="ramo" id="r5">Química</button>
 
-        <!-- Año 1 -->
-        <div class="anio">
-            <h2>AÑO 1</h2>
+        <button class="ramo" id="r6">Inglés I</button>
+        <button class="ramo" id="r7">Bioestadística</button>
+        <button class="ramo" id="r8" data-requiere="r3">Anatomía del Canino</button>
+        <button class="ramo" id="r9">Histoembriología</button>
+        <button class="ramo" id="r10" data-requiere="r5">Bioquímica</button>
 
-            <div class="semestre">
-                <h3>Semestre 1</h3>
-                <div class="ramos">
-                    <button class="ramo" id="r1">Taller de Comunicación Oral y Escrita</button>
-                    <button class="ramo" id="r2">Matemática General</button>
-                    <button class="ramo" id="r3">Introducción a la Medicina Veterinaria</button>
-                    <button class="ramo" id="r4">Biología Celular</button>
-                    <button class="ramo" id="r5">Química</button>
-                </div>
-            </div>
-
-            <div class="semestre">
-                <h3>Semestre 2</h3>
-                <div class="ramos">
-                    <button class="ramo" id="r6" data-requiere="r1,r2,r4,r5">Inglés I</button>
-                    <button class="ramo" id="r7">Bioestadística</button>
-                    <button class="ramo" id="r8" data-requiere="r3">Anatomía del Canino</button>
-                    <button class="ramo" id="r9">Histoembriología</button>
-                    <button class="ramo" id="r10" data-requiere="r5">Bioquímica</button>
-                </div>
-            </div>
-            
-             <!-- Año 2 -->
-        <div class="anio">
-            <h2>AÑO 2</h2>
-            
-             <div class="semestre">
-                <h3>Semestre 3</h3>
-                <div class="ramos">
-                    <button class="ramo" id="r11">Ingles II</button>
-                    <button class="ramo" id="r12">Medio ambiente y gestion ambiental</button>
-                    <button class="ramo" id="r13">Anatomia comparada</button>
-                    <button class="ramo" id="r14">Zoologia</button>
-                </div>
-             </div>
+        <button class="ramo" id="r20" data-requiere="r3">Práctica Básica</button>
+        <button class="ramo" id="r21" data-requiere="r20">Práctica Intermedia</button>
+        <button class="ramo" id="r22" data-requiere="r21">Práctica Final</button>
+    </div>
 
     <script src="script.js"></script>
 </body>
