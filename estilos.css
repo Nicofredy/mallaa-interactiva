@@ -1,48 +1,58 @@
-/* estilos.css */
-
 body {
-  font-family: Arial, sans-serif;
-  background-color: #ffeaf7;
-  margin: 0;
-  padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #fff0f5;
+    color: #333;
+    padding: 20px;
 }
 
 h1 {
-  text-align: center;
-  color: #d63384;
+    text-align: center;
+    color: #d63384;
 }
 
-#malla {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 10px;
-  margin-top: 20px;
+.anio {
+    border: 2px solid #ff99cc;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 30px;
+    background-color: #ffe6f0;
+}
+
+.semestre {
+    margin-top: 20px;
+}
+
+.ramos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .ramo {
-  background-color: #f8d7e9;
-  border: 2px solid #d63384;
-  border-radius: 10px;
-  padding: 10px;
-  text-align: center;
-  cursor: pointer;
-  transition: 0.3s ease;
+    background-color: #ffc0cb;
+    border: 2px solid #d63384;
+    color: #333;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 200px;
+    text-align: center;
 }
 
 .ramo:hover {
-  background-color: #ffc2de;
+    background-color: #ffa6c9;
 }
 
 .ramo.aprobado {
-  background-color: #e8ffe8;
-  border-color: #28a745;
-  color: #155724;
-  text-decoration: line-through;
+    background-color: #d63384;
+    color: white;
+    text-decoration: line-through;
 }
 
 .ramo.bloqueado {
-  background-color: #f5f5f5;
-  border-color: #ccc;
-  color: #999;
-  cursor: not-allowed;
+    background-color: #f0c1d8;
+    border: 2px dashed #999;
+    color: #888;
+    cursor: not-allowed;
 }
